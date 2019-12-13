@@ -9,7 +9,6 @@ class Player {
 
     this.posX = 250;
     this.posY = gameHeight * 0.98 - this.height ;
- 
     this.vy = 1;
     this.vx = 1;
     this.gameWidth = gameWidth;
@@ -41,17 +40,13 @@ class Player {
 
   move() {
        if (this.posY <= 0) {
-      this.vy = 1;
       this.posY = 0;
     } if (this.posY >= 640) {
-        this.vy = 1;
         this.posY = 640;
     }
      if (this.posX <= 0) {
-        this.vx = 1;
         this.posX = 0;
     } if (this.posX >= 550) {
-        this.vx = 1;
         this.posX = 550;
     }
     
@@ -67,30 +62,86 @@ class Player {
   }
 
   setListeners() {
+
+    let diagonals = {
+      up: false,
+      right: false,
+      down: false,
+      left: false,
+    }
+
     document.addEventListener('keydown', (e) => {
       switch(e.keyCode) {
         case this.keys.up:
-          console.log(this.posY)
-          this.posY -= 10;
-          this.vy -= 15;
+          console.log("arriba")
+          this.posY -= 15;
+          this.vy -= 45;
+          diagonals.up = true;
         break;
         case this.keys.right:
           console.log("derecha")
-          this.posX +=5;
-          this.vx += 10;
+          this.posX +=15;
+          this.vx += 45;
+          diagonals.right = true;
         break;
         case this.keys.down:
-          console.log(this.posY)
-          this.posY +=5;
-          this.vy +=10;
+            console.log("abajo")
+          this.posY +=15;
+          this.vy +=45;
+          diagonals.down = true;
         break;
         case this.keys.left:
-          console.log("izquierda")
-          this.posX -= 5;
-          this.vx -= 10;
-        break;
-        case this.keys.space:
-          this.shoot()
+            console.log("izquierda")
+          this.posX -= 15;
+          this.vx -= 45;
+          diagonals.left = true;
+      }
+
+         if (diagonals.up && diagonals.right) {
+        console.log("diagonal up right")
+        this.posY -= 15;
+        this.vy -= 45;
+        this.posX +=15;
+        this.vx += 45;
+      } else if (diagonals.right && diagonals.down) {
+        console.log("diagonal up down")
+        this.posX +=15;
+        this.vx += 45;
+        this.posY +=15;
+        this.vy +=45;
+      } 
+      
+      else if (diagonals.down && diagonals.left) {
+        console.log("diagonal down left")
+        this.posY +=15;
+        this.vy +=45;
+        this.posX -= 15;
+        this.vx -= 45;
+      } 
+      
+      else if (diagonals.left && diagonals.up) {
+        console.log("diagonal left up")
+        this.posX -= 15;
+        this.vx -= 45;
+        this.posY -= 15;
+        this.vy -= 45;
+      }
+    })
+    
+    document.addEventListener('keyup', (e) => {
+      if (this.keys.up === e.keyCode) {
+        diagonals.up = false;
+      } else if (this.keys.right === e.keyCode) {
+        diagonals.right = false;
+      } else if (this.keys.down === e.keyCode) {
+        diagonals.down = false;
+      } else if (this.keys.left === e.keyCode) {
+        diagonals.left = false;
+      } else if (this.keys.space === e.keyCode) {
+        diagonals.space = false;
+      }
+      if (this.keys.space === e.keyCode) {
+        this.shoot()
       }
     })
   }
