@@ -29,16 +29,17 @@ const Game = {
     this.reset()
     this.interval = setInterval(() => {
       this.framesCounter++;
-
       this.clear();
       this.drawAll();
       this.moveAll();
+
     }, 1000/this.fps)
   },
 
   reset: function() {
     this.background = new Background(this.ctx, this.width, this.height);
-    this.player = new Player(this.ctx, 50, 150, 'images/ship1.png', this.width,this.height, this.playerKeys);
+    this.player = new Player(this.ctx, 120, 120, 'images/ship1.png', this.width,this.height, this.playerKeys);
+    // ScoreBoard.init(this.ctx, this.score)
   },
 
   clear: function() {
@@ -48,6 +49,7 @@ const Game = {
   drawAll: function() {
     this.background.draw();
     this.player.draw(this.framesCounter);
+    // ScoreBoard.draw(this.score)
   },
 
   moveAll: function() {
@@ -57,5 +59,9 @@ const Game = {
 
   gameOver: function() {
     clearInterval(this.interval)
+  },
+
+  isCollision: function() {
+    return this.obstacles.some(obs => (this.player.posX + this.player.width > obs.posX && obs.posX + obs.width > this.player.posX && this.player.posY + this.player.height > obs.posY && obs.posY + obs.height > this.player.posY ))
   },
 }

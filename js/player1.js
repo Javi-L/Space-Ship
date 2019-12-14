@@ -8,7 +8,7 @@ class Player {
     this.image.src = image;
 
     this.posX = 250;
-    this.posY = gameHeight * 0.98 - this.height ;
+    this.posY = gameHeight * 0.98 - this.height;
     this.vy = 1;
     this.vx = 1;
     this.gameWidth = gameWidth;
@@ -18,139 +18,149 @@ class Player {
 
     this.keys = keys;
     this.bullets = [];
-    this.setListeners()
+    this.setListeners();
   }
 
-  draw(framesCounter) {
+  draw() {
     this.ctx.drawImage(
-      this.image, 
-      this.framesIndex * Math.floor(this.image.width / this.frames),
-      0,
-      Math.floor(this.image.width / this.frames),
-      this.image.height,
-      this.posX, 
-      this.posY, 
-      this.width, 
+      this.image,
+      this.posX,
+      this.posY,
+      this.width,
       this.height
-      )
-      this.clearBullets()
-      this.bullets.forEach(bullet => bullet.draw())
-      this.animate(framesCounter)
+    );
+    this.clearBullets();
+    this.bullets.forEach(bullet => bullet.draw());
   }
 
   move() {
-       if (this.posY <= 0) {
+    if (this.posY <= 0) {
       this.posY = 0;
-    } if (this.posY >= 640) {
-        this.posY = 640;
     }
-     if (this.posX <= 0) {
-        this.posX = 0;
-    } if (this.posX >= 550) {
-        this.posX = 550;
+    if (this.posY >= 640) {
+      this.posY = 640;
     }
-    
-    this.bullets.forEach(bullet => bullet.move())
+    if (this.posX <= 0) {
+      this.posX = 0;
+    }
+    if (this.posX >= 550) {
+      this.posX = 550;
+    }
+
+    this.bullets.forEach(bullet => bullet.move());
   }
 
   animate(framesCounter) {
-    if(framesCounter % 10 === 0) {
+    if (framesCounter % 10 === 0) {
       this.framesIndex++;
 
-      if(this.framesIndex > 2) this.framesIndex = 0;
+      if (this.framesIndex > 2) this.framesIndex = 0;
     }
   }
 
   setListeners() {
-
     let diagonals = {
       up: false,
       right: false,
       down: false,
-      left: false,
-    }
+      left: false
+    };
 
-    document.addEventListener('keydown', (e) => {
-      switch(e.keyCode) {
+    document.addEventListener("keydown", e => {
+      switch (e.keyCode) {
         case this.keys.up:
-          console.log("arriba")
-          this.posY -= 15;
-          this.vy -= 45;
           diagonals.up = true;
-        break;
+          console.log(diagonals);
+          break;
         case this.keys.right:
-          console.log("derecha")
-          this.posX +=15;
-          this.vx += 45;
           diagonals.right = true;
-        break;
+          console.log(diagonals);
+          break;
         case this.keys.down:
-            console.log("abajo")
-          this.posY +=15;
-          this.vy +=45;
           diagonals.down = true;
-        break;
+          console.log(diagonals);
+          break;
         case this.keys.left:
-            console.log("izquierda")
-          this.posX -= 15;
-          this.vx -= 45;
           diagonals.left = true;
+          console.log(diagonals);
       }
 
-         if (diagonals.up && diagonals.right) {
-        console.log("diagonal up right")
+      if (diagonals.up && diagonals.right) {
+        console.log("diagonal up right");
+        console.log(diagonals);
         this.posY -= 15;
         this.vy -= 45;
-        this.posX +=15;
+        this.posX += 15;
         this.vx += 45;
       } else if (diagonals.right && diagonals.down) {
-        console.log("diagonal up down")
-        this.posX +=15;
+        console.log("diagonal right down");
+        console.log(diagonals);
+        this.posX += 15;
         this.vx += 45;
-        this.posY +=15;
-        this.vy +=45;
-      } 
-      
-      else if (diagonals.down && diagonals.left) {
-        console.log("diagonal down left")
-        this.posY +=15;
-        this.vy +=45;
+        this.posY += 15;
+        this.vy += 45;
+      } else if (diagonals.down && diagonals.left) {
+        console.log("diagonal down left");
+        console.log(diagonals);
+        this.posY += 15;
+        this.vy += 45;
         this.posX -= 15;
         this.vx -= 45;
-      } 
-      
-      else if (diagonals.left && diagonals.up) {
-        console.log("diagonal left up")
+      } else if (diagonals.left && diagonals.up) {
+        console.log("diagonal left up");
+        console.log(diagonals);
         this.posX -= 15;
         this.vx -= 45;
         this.posY -= 15;
         this.vy -= 45;
+      } else if (diagonals.up) {
+        console.log("arriba");
+        this.posY -= 15;
+        this.vy -= 45;
+      } else if (diagonals.right) {
+        console.log("derecha");
+        this.posX += 15;
+        this.vx += 45;
+      } else if (diagonals.down) {
+        console.log("abajo");
+        this.posY += 15;
+        this.vy += 45;
+      } else if (diagonals.left) {
+        console.log("izquierda");
+        this.posX -= 15;
+        this.vx -= 45;
       }
-    })
-    
-    document.addEventListener('keyup', (e) => {
+    });
+    document.addEventListener("keyup", e => {
       if (this.keys.up === e.keyCode) {
         diagonals.up = false;
+        console.log(diagonals);
       } else if (this.keys.right === e.keyCode) {
         diagonals.right = false;
+        console.log(diagonals);
       } else if (this.keys.down === e.keyCode) {
         diagonals.down = false;
+        console.log(diagonals);
       } else if (this.keys.left === e.keyCode) {
         diagonals.left = false;
-      } else if (this.keys.space === e.keyCode) {
-        diagonals.space = false;
+        console.log(diagonals);
       }
+
       if (this.keys.space === e.keyCode) {
-        this.shoot()
+        this.shoot();
+        console.log(this.bullets);
+        console.log(diagonals);
       }
-    })
+    });
   }
 
   shoot() {
-    this.bullets.push(new Bullet(this.ctx, 10, this.posX, this.posY, this.width, this.height, this.posY0))
+    this.bullets.push(
+      new Bullet(this.ctx, 10, this.posX, this.posY, this.width, this.height)
+    );
   }
 
   clearBullets() {
-    this.bullets = this.bullets.filter(bullet => bullet.posX <= this.gameWidth)
+    this.bullets = this.bullets.filter(bullet => bullet.posY >= 0);
   }
 }
