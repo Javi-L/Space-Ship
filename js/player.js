@@ -13,8 +13,8 @@ class Player {
     this.vx = 1;
     this.gameWidth = gameWidth;
 
-    this.frames = 3;
-    this.framesIndex = 0;
+    // this.frames = 3;
+    // this.framesIndex = 0;
 
     this.keys = keys;
     this.bullets = [];
@@ -31,6 +31,7 @@ class Player {
     );
     this.clearBullets();
     this.bullets.forEach(bullet => bullet.draw());
+    // this.animate(framesCounter);
   }
 
   move() {
@@ -50,13 +51,13 @@ class Player {
     this.bullets.forEach(bullet => bullet.move());
   }
 
-  animate(framesCounter) {
-    if (framesCounter % 10 === 0) {
-      this.framesIndex++;
+  // animate(framesCounter) {
+  //   if (framesCounter % 10 === 0) {
+  //     this.framesIndex++;
 
-      if (this.framesIndex > 2) this.framesIndex = 0;
-    }
-  }
+  //     if (this.framesIndex > 2) this.framesIndex = 0;
+  //   }
+  // }
 
   setListeners() {
     let diagonals = {
@@ -83,6 +84,7 @@ class Player {
         case this.keys.left:
           diagonals.left = true;
           console.log(diagonals);
+          break;
       }
 
       if (diagonals.up && diagonals.right) {

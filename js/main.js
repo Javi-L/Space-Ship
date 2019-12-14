@@ -4,7 +4,7 @@ const Game = {
   width: undefined,
   height: undefined,
   fps: 60,
-  framesCounter: 0,
+  // framesCounter: 0,
   playerKeys: {
     up: 38,
     down: 40,
@@ -28,18 +28,17 @@ const Game = {
   start: function() {
     this.reset()
     this.interval = setInterval(() => {
-      this.framesCounter++;
+      // this.framesCounter++;
       this.clear();
       this.drawAll();
       this.moveAll();
-
     }, 1000/this.fps)
   },
 
   reset: function() {
     this.background = new Background(this.ctx, this.width, this.height);
-    this.player = new Player(this.ctx, 120, 120, 'images/ship1.png', this.width,this.height, this.playerKeys);
-    // ScoreBoard.init(this.ctx, this.score)
+    this.player = new Player(this.ctx, 120, 120, 'images/ship1.png', this.width, this.height, this.playerKeys);
+    this.mothership = new Mothership (this.ctx, 250, 290, 'images/mothership1.png', this.width, this.height);
   },
 
   clear: function() {
@@ -49,7 +48,7 @@ const Game = {
   drawAll: function() {
     this.background.draw();
     this.player.draw(this.framesCounter);
-    // ScoreBoard.draw(this.score)
+    this.mothership.draw();
   },
 
   moveAll: function() {
