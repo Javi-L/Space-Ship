@@ -75,6 +75,6 @@ class Mothership {
   }
 
   clearBullets() {
-    this.bulletsEnemies = this.bulletsEnemies.filter(bullet => bullet.posY >= 0);
+    this.bulletsEnemies = this.bulletsEnemies.filter(bullet => bullet.posY <= 800);
   }
 }
