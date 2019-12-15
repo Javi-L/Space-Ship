@@ -54,6 +54,7 @@ const Game = {
   moveAll: function() {
     this.background.move()
     this.player.move()
+    this.mothership.move();
   },
 
   gameOver: function() {

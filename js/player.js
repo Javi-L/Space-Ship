@@ -8,7 +8,7 @@ class Player {
     this.image.src = image;
 
     this.posX = 250;
-    this.posY = gameHeight * 0.98 - this.height;
+    this.posY = 640;
     this.vy = 1;
     this.vx = 1;
     this.gameWidth = gameWidth;
@@ -38,14 +38,14 @@ class Player {
     if (this.posY <= 0) {
       this.posY = 0;
     }
-    if (this.posY >= 640) {
-      this.posY = 640;
+    if (this.posY >= 675) {
+      this.posY = 675;
     }
     if (this.posX <= 0) {
       this.posX = 0;
     }
-    if (this.posX >= 550) {
-      this.posX = 550;
+    if (this.posX >= 480) {
+      this.posX = 480;
     }
 
     this.bullets.forEach(bullet => bullet.move());
@@ -60,7 +60,7 @@ class Player {
   // }
 
   setListeners() {
-    let diagonals = {
+    let direction = {
       up: false,
       right: false,
       down: false,
@@ -70,95 +70,80 @@ class Player {
     document.addEventListener("keydown", e => {
       switch (e.keyCode) {
         case this.keys.up:
-          diagonals.up = true;
-          console.log(diagonals);
+          direction.up = true;
           break;
         case this.keys.right:
-          diagonals.right = true;
-          console.log(diagonals);
+          direction.right = true;
           break;
         case this.keys.down:
-          diagonals.down = true;
-          console.log(diagonals);
+          direction.down = true;
           break;
         case this.keys.left:
-          diagonals.left = true;
-          console.log(diagonals);
+          direction.left = true;
           break;
       }
 
-      if (diagonals.up && diagonals.right) {
-        console.log("diagonal up right");
-        console.log(diagonals);
+      if (direction.up && direction.right) {
         this.posY -= 15;
         this.vy -= 45;
         this.posX += 15;
         this.vx += 45;
-      } else if (diagonals.right && diagonals.down) {
-        console.log("diagonal right down");
-        console.log(diagonals);
+      } else if (direction.right && direction.down) {
         this.posX += 15;
         this.vx += 45;
         this.posY += 15;
         this.vy += 45;
-      } else if (diagonals.down && diagonals.left) {
-        console.log("diagonal down left");
-        console.log(diagonals);
+      } else if (direction.down && direction.left) {
         this.posY += 15;
         this.vy += 45;
         this.posX -= 15;
         this.vx -= 45;
-      } else if (diagonals.left && diagonals.up) {
-        console.log("diagonal left up");
-        console.log(diagonals);
+      } else if (direction.left && direction.up) {
         this.posX -= 15;
         this.vx -= 45;
         this.posY -= 15;
         this.vy -= 45;
-      } else if (diagonals.up) {
-        console.log("arriba");
+      } else if (direction.up) {
         this.posY -= 15;
         this.vy -= 45;
-      } else if (diagonals.right) {
-        console.log("derecha");
+      } else if (direction.right) {
         this.posX += 15;
         this.vx += 45;
-      } else if (diagonals.down) {
-        console.log("abajo");
+      } else if (direction.down) {
         this.posY += 15;
         this.vy += 45;
-      } else if (diagonals.left) {
-        console.log("izquierda");
+      } else if (direction.left) {
         this.posX -= 15;
         this.vx -= 45;
       }
     });
     document.addEventListener("keyup", e => {
       if (this.keys.up === e.keyCode) {
-        diagonals.up = false;
-        console.log(diagonals);
+        direction.up = false;
       } else if (this.keys.right === e.keyCode) {
-        diagonals.right = false;
-        console.log(diagonals);
+        direction.right = false;
       } else if (this.keys.down === e.keyCode) {
-        diagonals.down = false;
-        console.log(diagonals);
+        direction.down = false;
       } else if (this.keys.left === e.keyCode) {
-        diagonals.left = false;
-        console.log(diagonals);
+        direction.left = false;
       }
-
       if (this.keys.space === e.keyCode) {
         this.shoot();
-        console.log(this.bullets);
-        console.log(diagonals);
       }
     });
   }
 
   shoot() {
     this.bullets.push(
-      new Bullet(this.ctx, 10, this.posX, this.posY, this.width, this.height)
+      new Bullet(
+        this.ctx,
+        "player",
+        10,
+        this.posX,
+        this.posY,
+        this.width,
+        this.height
+      )
     );
   }
 

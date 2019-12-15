@@ -1,12 +1,28 @@
 class Bullet {
-  constructor(ctx, radius, playerX, playerY, playerWidth, playerHeight, floor) {
+  constructor(
+    ctx,
+    type,
+    radius,
+    playerX,
+    playerY,
+    playerWidth,
+    playerHeight /*floor*/
+  ) {
     this.ctx = ctx;
     this.radius = radius;
 
     this.posX = playerX + playerWidth / 2;
     this.posY = playerY + playerHeight / 2;
     this.playerHeight = playerHeight;
-    this.vy = 1;
+
+    if (type === "player") {
+      this.vy = -15;
+      console.log("player shoot", this.vy);
+    } else if (type === "mothership") {
+      this.vy = 15;
+      console.log("nodriza shoot", this.vy);
+      this.radius = 15;
+    }
   }
 
   draw() {
@@ -18,7 +34,7 @@ class Bullet {
   }
 
   move() {
-    this.posY -= 15;
-    this.vy -= 45;
+    this.posY += this.vy;
+    console.log(this.posY);
   }
 }
