@@ -9,12 +9,23 @@ class Player {
 
     this.posX = 250;
     this.posY = 640;
+
     this.vy = 1;
     this.vx = 1;
-    this.gameWidth = gameWidth;
 
-    // this.frames = 3;
-    // this.framesIndex = 0;
+    this.gameWidth = gameWidth;
+    this.gameHeight = gameHeight;
+    this.healthPlayer = 346;
+    this.barLifePlayer = new Health(
+      this.ctx,
+      12,
+      12,
+      "#1C6177",
+      10,
+      10,
+      "#1DC8B8",
+      346
+    );
 
     this.keys = keys;
     this.bullets = [];
@@ -31,7 +42,7 @@ class Player {
     );
     this.clearBullets();
     this.bullets.forEach(bullet => bullet.draw());
-    // this.animate(framesCounter);
+    this.barLifePlayer.draw();
   }
 
   move() {
@@ -50,14 +61,6 @@ class Player {
 
     this.bullets.forEach(bullet => bullet.move());
   }
-
-  // animate(framesCounter) {
-  //   if (framesCounter % 10 === 0) {
-  //     this.framesIndex++;
-
-  //     if (this.framesIndex > 2) this.framesIndex = 0;
-  //   }
-  // }
 
   setListeners() {
     let direction = {
@@ -138,13 +141,14 @@ class Player {
       new Bullet(
         this.ctx,
         "player",
-        10,
         this.posX,
         this.posY,
         this.width,
-        this.height
+        this.height,
+        "images/laserBlue1.png"
       )
     );
+    Game.enemyDamaged();
   }
 
   clearBullets() {

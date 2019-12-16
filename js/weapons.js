@@ -1,13 +1,5 @@
 class Bullet {
-  constructor(
-    ctx,
-    type,
-    radius,
-    playerX,
-    playerY,
-    playerWidth,
-    playerHeight /*floor*/
-  ) {
+  constructor(ctx, type, radius, playerX, playerY, playerWidth, playerHeight) {
     this.ctx = ctx;
     this.radius = radius;
 
