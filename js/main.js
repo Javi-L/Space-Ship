@@ -31,7 +31,7 @@ const Game = {
       this.drawAll();
       this.moveAll();
       if (this.player.healthPlayer < 17.29) this.gameOver();
-    }, 5000 / this.fps);
+    }, 1000 / this.fps);
   },
 
   reset: function() {
