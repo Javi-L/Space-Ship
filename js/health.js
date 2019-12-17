@@ -1,5 +1,14 @@
 class Health {
-  constructor(ctx, posX, posY, fillStyle, rectX, rectY, fillStyle2, healthWidth) {
+  constructor(
+    ctx,
+    posX,
+    posY,
+    fillStyle,
+    rectX,
+    rectY,
+    fillStyle2,
+    healthWidth
+  ) {
     this.ctx = ctx;
     this.posX = posX;
     this.posY = posY;
