@@ -18,7 +18,7 @@ class Mothership {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
 
-    this.healthMShip = 346;
+    this.healthMShip = 300;
     this.barLifeMShip = new Health(
       this.ctx,
       12,
@@ -27,7 +27,7 @@ class Mothership {
       10,
       43,
       "#CB3211",
-      346
+      300
     );
 
     this.vy = 3;

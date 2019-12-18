@@ -16,7 +16,7 @@ class Health {
     this.fillStyle = fillStyle;
     this.rectX = rectX;
     this.rectY = rectY;
-    this.rectW = 350;
+    this.rectW = 304;
     this.rectH = 25;
     this.fillStyle2 = fillStyle2;
     this.innerRectW = healthWidth;

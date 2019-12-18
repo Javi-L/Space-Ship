@@ -10,12 +10,12 @@ class Player {
     this.posX = 250;
     this.posY = 640;
 
-    this.vy = 1;
-    this.vx = 1;
+    this.vy = 3;
+    this.vx = 3;
 
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.healthPlayer = 346;
+    this.healthPlayer = 300;
     this.barLifePlayer = new Health(
       this.ctx,
       12,
@@ -24,7 +24,7 @@ class Player {
       10,
       10,
       "#1DC8B8",
-      346
+      300
     );
 
     this.keys = keys;

@@ -30,7 +30,7 @@ const Game = {
       this.clear();
       this.drawAll();
       this.moveAll();
-      if (this.player.healthPlayer < 17.29) this.gameOver();
+      if (this.player.healthPlayer === 0) this.gameOver();
     }, 1000 / this.fps);
   },
 
@@ -77,9 +77,9 @@ const Game = {
       function(bullet) {
         if (
           this.playerAttack(bullet) === true &&
-          this.mothership.healthMShip > 11.53
+          this.mothership.healthMShip >= 10
         ) {
-          this.mothership.healthMShip -= 11.53;
+          this.mothership.healthMShip -= 10;
           this.mothership.barLifeMShip.innerRectW = this.mothership.healthMShip;
           console.log(this.mothership.healthMShip);
         }
@@ -105,11 +105,12 @@ const Game = {
       function(bullet) {
         if (
           this.enemyAttack(bullet) === true &&
-          this.player.healthPlayer > 17.3
+          this.player.healthPlayer >=20
         ) {
-          console.log(this.player.healthPlayer);
-          this.player.healthPlayer -= 17.29;
+         
+          this.player.healthPlayer -= 20;
           this.player.barLifePlayer.innerRectW = this.player.healthPlayer;
+          console.log(this.player.healthPlayer);
         }
       }.bind(this)
     );
@@ -126,6 +127,12 @@ const Game = {
       return true;
     }
   },
+
+  // enemyDestroyed: function() {
+ 
+
+  //   }
+  // },
 
   gameOver: function() {
     clearInterval(this.interval);
