@@ -4,6 +4,7 @@ const Game = {
   width: undefined,
   height: undefined,
   fps: 60,
+  time: 0,
   playerKeys: {
     up: 38,
     down: 40,
@@ -30,29 +31,28 @@ const Game = {
       this.clear();
       this.drawAll();
       this.moveAll();
+      this.time ++;
+      // console.log(this.time);
+      this.counter ++;
+      if (this.time > 2500 && this.counter < 5001) {
+        this.time = 0;
+      }
       if (this.player.healthPlayer === 0) this.gameOver();
+
+      switch(this.time) {
+        case 250: this.enemies.push (new Enemy(this.ctx, 250, 290, "images/mothership1.png", this.width, this.height, 250, 0, 360, "mothership"));
+        break;
+        case 500: this.enemies.push (new Enemy(this.ctx, 250, 290, "images/mothership2.png", this.width, this.height, 250, 0, 360, "mothership"));
+        break;
+      }
     }, 1000 / this.fps);
   },
 
   reset: function() {
     this.background = new Background(this.ctx, this.width, this.height);
-    this.player = new Player(
-      this.ctx,
-      120,
-      120,
-      "images/ship1.png",
-      this.width,
-      this.height,
-      this.playerKeys
-    );
-    this.mothership = new Mothership(
-      this.ctx,
-      250,
-      290,
-      "images/mothership1.png",
-      this.width,
-      this.height
-    );
+    this.player = new Player(this.ctx, 120, 120, "images/ship1.png", this.width, this.height, this.playerKeys);
+    this.enemies = [];
+    this.generateEnemies()
   },
 
   clear: function() {
@@ -61,47 +61,71 @@ const Game = {
 
   drawAll: function() {
     this.background.draw();
-    this.mothership.draw();
+    // this.enemy.draw();
+    this.enemies.forEach(enemy => enemy.draw())
     this.player.draw();
   },
 
   moveAll: function() {
     this.background.move();
     this.player.move();
-    this.mothership.move();
+    // this.enemy.move();
+    this.enemies.forEach(enemy => enemy.move())
+  },
+
+  generateEnemies: function() {
+
+if (this.enemies.length < 12) {
+    for (let i = 0; i < 4; i++) {
+      this.posX1 = Math.floor(Math.random() * 500);
+      this.posY1 = Math.floor(Math.random() * 400);
+      this.enemies.push(new Enemy(this.ctx, 100, 100, "images/enemy1.png", this.width, this.height, this.posX1, this.posY1, 500, "enemy1"));
+    }
+    }
   },
 
   //Recorremos el array de balas de player
   enemyDamaged: function() {
-    this.player.bullets.forEach(
-      function(bullet) {
-        if (
-          this.playerAttack(bullet) === true &&
-          this.mothership.healthMShip >= 10
-        ) {
-          this.mothership.healthMShip -= 10;
-          this.mothership.barLifeMShip.innerRectW = this.mothership.healthMShip;
-          console.log(this.mothership.healthMShip);
-        }
-      }.bind(this)
-    );
+
+    console.log("Damage to enemies")
+
+    // this.player.bullets.forEach(function(bullet) {
+    //   this.enemies.childNodes.forEach(function(enemy) {
+    //     if (this.playerAttack(bullet) === true && enemy.enemy.healthMShip >= 10) {
+
+
+    //         console.log(enemy.enemy.healthMShip)
+    //         enemy.enemy.healthMShip -= 10;
+    //       enemy.enemy.barLifeMShip.innerRectW = enemy.enemy.healthMShip;
+    //       console.log(enemy.enemy.healthMShip);
+        
+          
+    //     }
+    //   }.bind(this));
+    // })
   },
+
 
   //Comprobamos que las balas aciertan en el enemigo
   playerAttack: function(e) {
+    this.enemies.forEach(function(enemy) {
     if (
-      this.mothership.posX < e.posX + e.width &&
-      this.mothership.posX + this.mothership.width > e.posX &&
-      this.mothership.posY < e.posY + e.height &&
-      this.mothership.posY + this.mothership.height > e.posY
+      enemy.posX < e.posX + e.width &&
+      enemy.posX + enemy.width > e.posX &&
+      enemy.posY < e.posY + e.height &&
+      enemy.posY + enemy.height > e.posY
     ) {
+      // console.log("enemy posX", enemy.posX)
+      // console.log("bala player posY", e.posY)
+      // console.log("e height", e.height)
       return true;
     }
+  })
   },
 
   //Recorremos el array de balas de enemy
   playerDamaged: function() {
-    this.mothership.bulletsEnemy.forEach(
+    this.enemy.bulletsEnemy.forEach(
       function(bullet) {
         if (
           this.enemyAttack(bullet) === true &&
@@ -129,7 +153,6 @@ const Game = {
   },
 
   // enemyDestroyed: function() {
- 
 
   //   }
   // },

@@ -140,12 +140,14 @@ class Player {
     this.bullets.push(
       new Bullet(
         this.ctx,
-        "player",
         this.posX,
         this.posY,
         this.width,
         this.height,
-        "images/laserBlue1.png"
+        "images/laserBlue1.png",
+        -15,
+        9,
+        37
       )
     );
     Game.enemyDamaged();
