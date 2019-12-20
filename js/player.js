@@ -136,7 +136,7 @@ class Player {
     });
   }
 
-  shoot() {
+  shoot() { //PONER UN IF PARA DIFERENCIAR EL ATAQUE/DAMAGE A NAVE NORMAL O A NODRIZAS
     this.bullets.push(
       new Bullet(
         this.ctx,
@@ -150,7 +150,8 @@ class Player {
         37
       )
     );
-    Game.enemyDamaged();
+    Game.MShipDamaged();
+    // Game.enemyDamaged();
   }
 
   clearBullets() {

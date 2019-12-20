@@ -1,5 +1,5 @@
 class Enemy {
-  constructor(ctx, width, height, image, gameWidth, gameHeight, posX, posY, randomX, type) {
+  constructor(ctx, width, height, image, gameWidth, gameHeight, posX, posY, maxPosX, type, healthEnemy) {
     this.ctx = ctx;
     this.width = width;
     this.height = height;
@@ -12,15 +12,16 @@ class Enemy {
 
     this.posX = posX;
     this.posY = posY;
-    this.randomX = randomX;
+    this.maxPosX = maxPosX;
     this.type = type;
 
     this.interval = setInterval(() => {
       this.randomY = Math.floor(Math.random() * 300);
     }, 1000);
 
-    this.healthMShip = 300;
-    this.barLifeMShip = new Health(this.ctx, 12, 45, "#9C6177", 10, 43, "#CB3211", 300);
+    this.healthEnemy = healthEnemy;
+    console.log("health enemy", this.healthEnemy)
+    this.barLifeEnemy = new Health(this.ctx, 12, 45, "#9C6177", 10, 43, "#CB3211", 300);
 
     this.vy = 3;
     this.vx = 3;
@@ -41,14 +42,14 @@ class Enemy {
     );
     this.clearBullets();
     this.bulletsEnemy.forEach(bullet => bullet.draw());
-    this.barLifeMShip.draw();
+    this.barLifeEnemy.draw();
   }
 
   move() {
     this.posX += this.vx;
     this.posY += this.vy;
 
-    if (this.posX + this.vx > this.randomX) {
+    if (this.posX + this.vx > this.maxPosX) {
       this.vx *= -1;
     } else if (this.posX + this.vx < 0) {
       this.vx *= -1;
@@ -66,11 +67,11 @@ class Enemy {
   shoot() {
     this.type;
     if (this.type === "mothership") {
-    this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 15, 65, 108));
+    this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 15, 150, 108));
     } else if (this.type === "enemy1") {
       this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserGreen1.png", 15, 13, 37));
     }
-    // Game.playerDamaged();
+    Game.playerDamaged();
   }
 
   clearBullets() {
