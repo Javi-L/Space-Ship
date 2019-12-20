@@ -15,7 +15,7 @@ class Player {
 
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.healthPlayer = 300;
+    this.healthPlayer = 3000000;
     this.barLifePlayer = new Health(
       this.ctx,
       12,
@@ -136,7 +136,7 @@ class Player {
     });
   }
 
-  shoot() { //PONER UN IF PARA DIFERENCIAR EL ATAQUE/DAMAGE A NAVE NORMAL O A NODRIZAS
+  shoot() {
     this.bullets.push(
       new Bullet(
         this.ctx,
@@ -150,8 +150,13 @@ class Player {
         37
       )
     );
-    Game.MShipDamaged();
-    // Game.enemyDamaged();
+
+    if (Game.time <= 500) {
+    Game.enemyDamaged();
+    } 
+    else if (Game.time > 500 ) {
+    Game.mShipDamaged();
+    }
   }
 
   clearBullets() {
