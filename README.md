@@ -1,7 +1,7 @@
 # Space-Ship
 Project #1: The Game - Ironhack
 
-URL: https://javi-l.github.io/Space-Ship/
+URL: https://javi-l.github.io/Space-Ship/index.html
 
 Introducción:
 
