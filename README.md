@@ -19,5 +19,7 @@ Las colisiones entre balas y player o enemies se logran mediante bucles forEach 
 
 Las colisiones restan vida a la barra de salud de player y a la de la nave nodriza. Tambien a las de las naves aunque estas no muestran barra de salud.
 
+El juego termina al finalizar la vida de player o al derrotar este a la nave nodriza.
+
 Quise incluir items para incrementar la vida del player y alguna pantalla más pero me quedé sin tiempo para ello.
 
