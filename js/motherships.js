@@ -13,15 +13,11 @@ class Mothership {
       this.posX = posX;
       this.posY = posY;
       this.maxPosX = maxPosX;
-    //   this.type = type;
   
       this.interval = setInterval(() => {
         this.randomY = Math.floor(Math.random() * 300);
       }, 1000);
-  
-    //   this.healthEnemy = 30;
       this.healthMShip = healthMShip;
-      // console.log("health enemy", this.healthMShip)
       this.barLifeMShip = new Health(this.ctx, 12, 45, "#9C6177", 10, 43, "#CB3211", 300);
   
       this.vy = 3;
@@ -66,13 +62,8 @@ class Mothership {
     }
   
     shoot() {
-    //   this.type;
-    //   if (this.type === "mothership") {
-      this.bulletsMShip.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 15, 150, 108));
-    //   } else if (this.type === "enemy1") {
-    //     this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserGreen1.png", 15, 13, 37));
-    //   }
-      Game.playerDamaged();
+      this.bulletsMShip.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 8, 150, 108));
+      Game.playerDamagedByMShip();
     }
   
     clearBullets() {

@@ -15,7 +15,7 @@ class Player {
 
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
-    this.healthPlayer = 3000000;
+    this.healthPlayer = 300;
     this.barLifePlayer = new Health(
       this.ctx,
       12,
@@ -150,11 +150,11 @@ class Player {
         37
       )
     );
-
-    if (Game.time <= 500) {
+    
+    if (Game.time <= 1000) {
     Game.enemyDamaged();
     } 
-    else if (Game.time > 500 ) {
+    else if (Game.time > 1000 ) {
     Game.mShipDamaged();
     }
   }
