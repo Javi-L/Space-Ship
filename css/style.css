@@ -1,14 +1,12 @@
 body {
-    background-color: rgb(3, 26, 41);
-    
+  background-image: url("../images/fondo.jpg");
+  /* background-repeat: space repeat; */
+  background-size: cover;
+  background-color: rgb(3, 26, 41);
 }
 
 #canvas {
   margin: 100px auto 100px auto;
   display: block;
-  /* display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center; */
-  
+  border-radius: 15px; 
 }

@@ -20,9 +20,6 @@ class Enemy {
     }, 1000);
 
     this.healthEnemy = healthEnemy;
-    console.log("health enemy", this.healthEnemy)
-    this.barLifeEnemy = new Health(this.ctx, 12, 45, "#9C6177", 10, 43, "#CB3211", 300);
-
     this.vy = 3;
     this.vx = 3;
     this.bulletsEnemy = [];
@@ -42,7 +39,6 @@ class Enemy {
     );
     this.clearBullets();
     this.bulletsEnemy.forEach(bullet => bullet.draw());
-    this.barLifeEnemy.draw();
   }
 
   move() {
@@ -66,10 +62,10 @@ class Enemy {
 
   shoot() {
     this.type;
-    if (this.type === "mothership") {
-    this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 15, 150, 108));
+    if (this.type === "enemy2") {
+    this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/bulletEnemy2.png", 15, 50, 50));
     } else if (this.type === "enemy1") {
-      this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserGreen1.png", 15, 13, 37));
+      this.bulletsEnemy.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserGreen1.png", 7, 13, 37));
     }
     Game.playerDamaged();
   }
