@@ -40,8 +40,8 @@ const Game = {
         this.generateEnemies()
         break;
         case 2500:
-          this.generateEnemies()
-          break;
+        this.generateEnemies()
+        break;
         case 4000:
         this.enemies.splice(0, this.enemies.length);
         break;
@@ -82,7 +82,7 @@ const Game = {
   },
 
   generateEnemies: function() {
-if (this.enemies.length < 12) {
+  if (this.enemies.length < 12) {
     for (let i = 0; i < 4; i++) {
       this.posX1 = Math.floor(Math.random() * 500);
       this.posY1 = Math.floor(Math.random() * 400);
@@ -198,8 +198,7 @@ for (let i = 0; i < this.enemies.length; i ++) {
       if ( e === this.mShips[0]) {
         this.mShips.splice(0, 1);
         this.score += 500;
-        // secondGame.init(this.canvas, this.ctx, this.width, this.height, this.canvas, this.canvas)
-      this.background = new Background(this.ctx, this.width, this.height, "images/levelup.png", -4)
+        this.background = new Background(this.ctx, this.width, this.height, "images/levelup.png", -4)
     
       }
     },
