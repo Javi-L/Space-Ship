@@ -37,19 +37,17 @@ const secondGame = {
           this.time = 0;
         }
         if (this.player.healthPlayer === 0) this.gameOver();
-  
         switch(this.time) {
-          case 500:
-          for (let i = 0; i < 4; i++) {
-            this.posX1 = Math.floor(Math.random() * 500);
-            this.posY1 = Math.floor(Math.random() * 200);
-            this.enemies.push(new Enemy(this.ctx, 150, 150, "images/enemy2.png", this.width, this.height, this.posX1, this.posY1, 500, "enemy2", 30)); 
-        }
-        break;
           case 1000:
+          this.generateEnemies()
+          break;
+          case 2500:
+            this.generateEnemies()
+            break;
+          case 4000:
           this.enemies.splice(0, this.enemies.length);
           break;
-          case 10: this.mShips.push (new Mothership(this.ctx, 250, 290, "images/mothership2.png", this.width, this.height, 250, 0, 360, 300));
+          case 4001: this.mShips.push (new Mothership(this.ctx, 250, 290, "images/mothership2.png", this.width, this.height, 250, 0, 360, 300));
           break;
         }
       }, 1000 / this.fps);
