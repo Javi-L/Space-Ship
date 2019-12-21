@@ -5,7 +5,6 @@ const Game = {
   height: undefined,
   fps: 60,
   time: 0,
-  // counter: 0,
   playerKeys: {
     up: 38,
     down: 40,
@@ -33,11 +32,7 @@ const Game = {
       this.drawAll();
       this.moveAll();
       this.time ++;
-      // console.log("time", this.time);
-      // this.counter ++;
-      // if (this.time > 2500 && this.counter < 5000) {
-      //   this.time = 0;
-      // }
+
       if (this.player.healthPlayer === 0) this.gameOver();
 
       switch(this.time) {
