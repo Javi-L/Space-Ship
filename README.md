@@ -30,17 +30,17 @@ Se generan aleatoriamente mediante funciones de Math floor y random.
 
 Las colisiones entre balas y player o enemies se logran mediante bucles forEach y for, ya que tanto las balas como los enemies van agrupados en arrays.
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/battle.png
+<img src = https://github.com/Javi-L/Space-Ship/blob/master/screenshots/battle.png>
 
 
 Las colisiones restan vida a la barra de salud de player y a la de la nave nodriza. Tambien a las de las naves aunque estas no muestran barra de salud.
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/nodriza.png
+<img src = https://github.com/Javi-L/Space-Ship/blob/master/screenshots/nodriza.png>
 
 
 El juego termina al finalizar la vida de player o al derrotar este a la nave nodriza.
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/levelup.png
+<img src = https://github.com/Javi-L/Space-Ship/blob/master/screenshots/levelup.png>
 
 
 Quise incluir items para incrementar la vida del player y alguna pantalla más pero me quedé sin tiempo para ello.
