@@ -5,6 +5,8 @@ Introducción:
 
 Se trata de un juego de naves arcade clasico. Consiste en eliminar enemigos hasta llegar al final de pantalla y derrotar a la nave nodriza.
 
+Los enemigos se van generando mediante un switch controlado por una variable time.
+
 Movimientos de player:
 
 Este se mueve en las cuatro direcciones y en las diagonales mediante el uso combinado de key listeners y condiciones true false.
