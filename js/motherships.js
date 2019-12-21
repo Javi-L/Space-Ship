@@ -62,7 +62,7 @@ class Mothership {
     }
   
     shoot() {
-      this.bulletsMShip.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 8, 150, 108));
+      this.bulletsMShip.push(new Bullet(this.ctx, this.posX, this.posY, this.width, this.height, "images/laserRed16.png", 8, 80, 140));
       Game.playerDamagedByMShip();
     }
   

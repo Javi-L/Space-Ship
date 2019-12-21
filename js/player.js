@@ -151,10 +151,10 @@ class Player {
       )
     );
     
-    if (Game.time <= 1000) {
+    if (Game.time <= 4000) {
     Game.enemyDamaged();
     } 
-    else if (Game.time > 1000 ) {
+    else if (Game.time > 4000 ) {
     Game.mShipDamaged();
     }
   }

@@ -33,7 +33,7 @@ const Game = {
       this.drawAll();
       this.moveAll();
       this.time ++;
-      console.log("time", this.time);
+      // console.log("time", this.time);
       // this.counter ++;
       // if (this.time > 2500 && this.counter < 5000) {
       //   this.time = 0;
@@ -41,17 +41,16 @@ const Game = {
       if (this.player.healthPlayer === 0) this.gameOver();
 
       switch(this.time) {
-        case 500:
-        for (let i = 0; i < 4; i++) {
-          this.posX1 = Math.floor(Math.random() * 500);
-          this.posY1 = Math.floor(Math.random() * 200);
-          this.enemies.push(new Enemy(this.ctx, 150, 150, "images/enemy2.png", this.width, this.height, this.posX1, this.posY1, 500, "enemy2", 30)); 
-      }
-      break;
         case 1000:
+        this.generateEnemies()
+        break;
+        case 2500:
+          this.generateEnemies()
+          break;
+        case 4000:
         this.enemies.splice(0, this.enemies.length);
         break;
-        case 1001: this.mShips.push (new Mothership(this.ctx, 250, 290, "images/mothership2.png", this.width, this.height, 250, 0, 360, 300));
+        case 4001: this.mShips.push (new Mothership(this.ctx, 250, 290, "images/mothership2.png", this.width, this.height, 250, 0, 360, 300));
         break;
       }
     }, 1000 / this.fps);
@@ -89,12 +88,20 @@ const Game = {
 
   generateEnemies: function() {
 if (this.enemies.length < 12) {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
       this.posX1 = Math.floor(Math.random() * 500);
       this.posY1 = Math.floor(Math.random() * 400);
       this.enemies.push(new Enemy(this.ctx, 100, 100, "images/enemy1.png", this.width, this.height, this.posX1, this.posY1, 500, "enemy1", 20));
      }
+     setTimeout(() => {
+      for (let i = 0; i < 4; i++) {
+        this.posX1 = Math.floor(Math.random() * 500);
+        this.posY1 = Math.floor(Math.random() * 200);
+        this.enemies.push(new Enemy(this.ctx, 150, 150, "images/enemy2.png", this.width, this.height, this.posX1, this.posY1, 500, "enemy2", 30)); 
     }
+     }, 10000);
+
+    } 
   },
 
   mShipDamaged: function() {
@@ -202,6 +209,25 @@ for (let i = 0; i < this.enemies.length; i ++) {
       }
     },
 
+    lifeUp: function() {
+
+
+    },
+
+   collectItems: function (e) {
+
+      if  (
+        this.player.posX < e.posX + e.width &&
+        this.player.posX + this.player.width > e.posX &&
+        this.player.posY < e.posY + e.height &&
+        this.player.posY + this.player.height > e.posY
+      ) {    
+        
+        return true;
+    
+      }
+    },
+    
   gameOver: function() {
     alert("Game over")
     clearInterval(this.interval);
