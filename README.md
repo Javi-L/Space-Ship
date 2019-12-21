@@ -7,7 +7,7 @@ Introducción:
 
 Se trata de un juego de naves arcade clasico. Consiste en eliminar enemigos hasta llegar al final de pantalla y derrotar a la nave nodriza.
 
-Los enemigos se van generando mediante un switch controlado por una variable time.
+Los enemigos se van generando mediante un switch controlado por una variable time. La duracion del nivel se puede alargar añadiendo más case de instrucciones.
 
 <img src = "https://github.com/Javi-L/Space-Ship/blob/master/screenshots/switch.png">
 
