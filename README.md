@@ -9,23 +9,23 @@ Se trata de un juego de naves arcade clasico. Consiste en eliminar enemigos hast
 
 Los enemigos se van generando mediante un switch controlado por una variable time.
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/switch.png
+<img src = "https://github.com/Javi-L/Space-Ship/blob/master/screenshots/switch.png">
 
 
 Movimientos de player:
 
 Este se mueve en las cuatro direcciones y en las diagonales mediante el uso combinado de key listeners y condiciones true false.
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/keys-boolean.png
+<img src = https://github.com/Javi-L/Space-Ship/blob/master/screenshots/keys-boolean.png>
 
 
 Movimientos de enemies:
 
 Se generan aleatoriamente mediante funciones de Math floor y random.
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/randomY.png
+<img src = https://github.com/Javi-L/Space-Ship/blob/master/screenshots/randomY.png>
 
-https://github.com/Javi-L/Space-Ship/blob/master/screenshots/move-enemies.png
+<img src = https://github.com/Javi-L/Space-Ship/blob/master/screenshots/move-enemies.png>
 
 
 Las colisiones entre balas y player o enemies se logran mediante bucles forEach y for, ya que tanto las balas como los enemies van agrupados en arrays.
