@@ -111,7 +111,7 @@ move() {
     
  ```
  
-Las posiciones "X" e "Y" iniciales de los enemies son también aleatorias, y distintas dependiendo del tipo de enemigo, viniendo definidas al construirse éste; siendo así sus movimientos diferentes en función del tipo que sean.
+Las posiciones "X" e "Y" iniciales de los enemies son también aleatorias, y distintas dependiendo del tipo de enemigo, viniendo definidas al construirse éste; siendo así diferentes los movimientos de cada tipo de enemigo.
 
     this.posX1 = Math.floor(Math.random() * 500);
     this.posY1 = Math.floor(Math.random() * 400);
