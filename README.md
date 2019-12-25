@@ -126,6 +126,9 @@ Las posiciones "X" e "Y" iniciales de los enemies son también aleatorias, y dis
 Las colisiones entre balas y player o entre balas y enemies se logran mediante la combinación de bucles ```forEach``` con bucles ```for```, ya que tanto las balas como los enemies van agrupados en arrays.
 
 
+
+--------------------------------------------------------------
+
 Algunas capturas de pantalla del juego...
  
 <img src="https://github.com/Javi-L/Space-Ship/raw/master/screenshots/battle.png" style="max-width:100%;">
@@ -140,5 +143,3 @@ El juego termina al finalizar la vida de player o al derrotar éste a la nave no
 
 <img src="https://github.com/Javi-L/Space-Ship/raw/master/screenshots/levelup.png" style="max-width:100%;">
 
-
-El desarrollo del juego aún está en progreso, se incluirán items que incrementen la vida del player y posiblemente alguna pantalla más.
