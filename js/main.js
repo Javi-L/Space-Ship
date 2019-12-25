@@ -83,11 +83,13 @@ const Game = {
 
   generateEnemies: function() {
   if (this.enemies.length < 12) {
+    setTimeout(() => {
     for (let i = 0; i < 4; i++) {
       this.posX1 = Math.floor(Math.random() * 500);
       this.posY1 = Math.floor(Math.random() * 400);
       this.enemies.push(new Enemy(this.ctx, 100, 100, "images/enemy1.png", this.width, this.height, this.posX1, this.posY1, 500, "enemy1", 20));
      }
+    }, 2000);
      setTimeout(() => {
       for (let i = 0; i < 4; i++) {
         this.posX1 = Math.floor(Math.random() * 500);
@@ -103,7 +105,6 @@ const Game = {
   this.player.bullets.forEach(function(bullet) {
       if (this.playerAttackMS(bullet) === true && this.mShips[0].healthMShip >=10) {
         this.mShips[0].healthMShip -= 10;
-        console.log(this.mShips[0].healthMShip);
         this.mShips[0].barLifeMShip.innerRectW = this.mShips[0].healthMShip;
         if(this.mShips[0].healthMShip <= 0) {
           this.mShipDestroyed(this.mShips[0]);
@@ -132,7 +133,6 @@ const Game = {
           this.enemies[i].healthEnemy -= 10;
           if (this.enemies[i].healthEnemy <= 0) {
             this.enemyDestroyed(this.enemies[i]);
-            console.log(this.enemies[i].healthEnemy);
             return true;
           }
         }
@@ -157,7 +157,7 @@ const Game = {
 for (let i = 0; i < this.enemies.length; i ++) {
     this.enemies[i].bulletsEnemy.forEach(function(bullet) {
         if (this.enemyAttack(bullet) === true && this.player.healthPlayer >= 5) {
-          this.player.healthPlayer -= 5;
+          this.player.healthPlayer -= 3;
           this.player.barLifePlayer.innerRectW = this.player.healthPlayer;
         }
       }.bind(this));
@@ -188,7 +188,6 @@ for (let i = 0; i < this.enemies.length; i ++) {
 
   enemyDestroyed: function(e) {
     if(e === this.enemies[i]) {
-      console.log(e)
       this.enemies.splice(i, 1)
       this.score += 50;
     }
