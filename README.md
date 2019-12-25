@@ -134,7 +134,7 @@ Algunas capturas de pantalla del juego...
 <img src="https://github.com/Javi-L/Space-Ship/raw/master/screenshots/battle.png" style="max-width:100%;">
 
 
-Las colisiones restan vida a la barra de salud de player y a la de la nave nodriza. Tambien a las de las naves aunque estas no muestran barra de vida.
+Las colisiones restan vida a la barra de salud de player y a la de la nave nodriza. Tambien a las naves aunque estas no muestran barra de salud.
 
 <img src="https://github.com/Javi-L/Space-Ship/raw/master/screenshots/nodriza.png" style="max-width:100%;">
 
