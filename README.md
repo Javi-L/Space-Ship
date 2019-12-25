@@ -6,7 +6,7 @@ Project #1: The Game - Ironhack
 
 Se trata de un juego de naves arcade clásico. Consiste en eliminar enemigos hasta llegar al final de la pantalla y derrotar a la nave nodriza.
 
-Los enemigos se van generando mediante un switch controlado por una variable time. La duración del nivel se puede alargar añadiendo más case de instrucciones. Para esta demo, con fines demostrativos, se ha implementado una duración corta del nive.
+Los enemigos se van generando mediante un ```switch``` controlado por una variable ```time```. La duración del nivel se puede alargar añadiendo más ```case``` de instrucciones. Para esta demo, con fines demostrativos, se ha implementado una duración corta del nivel.
 
 ```
       switch(this.time) {
@@ -25,7 +25,7 @@ Los enemigos se van generando mediante un switch controlado por una variable tim
 
 ### Movimientos de player:
 
-Este se mueve en las cuatro direcciones utilizando las arrow keys y en las direcciones diagonales presionando a la vez las dos arrow keys correspondientes a la dirección diagonal que se quiera tomar (Ej: para ir en diagonal hacia la parte superior izquierda de la pantalla habrá que presionar a la vez las arrow keys ```izquierda``` y ```arriba```). El poder presionar dos teclas a la vez se ha hecho mediante el uso combinado de key listeners y condiciones true false. 
+Este se mueve en las cuatro direcciones utilizando las arrow keys y en las direcciones diagonales presionando a la vez las dos arrow keys correspondientes a la dirección diagonal que se quiera tomar (Ej: para ir en diagonal hacia la parte superior izquierda de la pantalla habrá que presionar a la vez las arrow keys ```izquierda``` y ```arriba```). El poder presionar dos teclas a la vez se ha hecho mediante el uso combinado de key listeners y condiciones ```true false```. 
 
 Primero se crea un objeto en el que a las arrow keys se les da una condición de false:
 ```
@@ -134,7 +134,7 @@ Algunas capturas de pantalla del juego...
 <img src="https://github.com/Javi-L/Space-Ship/raw/master/screenshots/battle.png" style="max-width:100%;">
 
 
-Las colisiones restan vida a la barra de salud de player y a la de la nave nodriza. Tambien a las naves aunque estas no muestran barra de salud.
+Las colisiones restan vida a la barra de salud de player y a la de la nave nodriza. Tambien a las otras naves aunque estas no muestran barra de salud.
 
 <img src="https://github.com/Javi-L/Space-Ship/raw/master/screenshots/nodriza.png" style="max-width:100%;">
 
