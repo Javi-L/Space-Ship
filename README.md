@@ -83,7 +83,7 @@ Tras ello mediante eventos "keyup" (dejar de presionar la tecla) haremos que las
       } ...
 
 
-## Movimientos de enemies:
+### Movimientos de enemies:
 
 Se generan aleatoriamente a partir de las funciones de Math floor y random. Primero se ha creado un valor máximo de la posición "Y" generada por random.
 ```
